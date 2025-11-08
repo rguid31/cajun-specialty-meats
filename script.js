@@ -25,6 +25,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 navMenu.classList.remove('active');
             }
         });
+
+        // Close mobile menu when scrolling
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // If menu is open and user scrolls, close it
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+
+            lastScrollTop = scrollTop;
+        }, false);
     }
 
     // Set active navigation link based on current page
