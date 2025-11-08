@@ -20,6 +20,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -27,6 +28,8 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--tan);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 img {
@@ -70,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    width: 100%;
 }
 
 /* ===== Header ===== */
@@ -80,6 +84,9 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 .header-content {
@@ -967,6 +974,58 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.5px;
 }
 
+/* ===== Small Mobile Devices ===== */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .nav-menu {
+        max-width: 100%;
+    }
+
+    .testimonial-stars {
+        font-size: 1.2rem;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .product-name {
+        font-size: 1.3rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+    }
+
+    .blog-title {
+        font-size: 1.2rem;
+    }
+}
+
 /* ===== Mobile Navigation ===== */
 @media (max-width: 768px) {
     .logo {
@@ -975,38 +1034,55 @@ h1, h2, h3, h4, h5, h6 {
 
     .nav-toggle {
         display: flex;
+        z-index: 1001;
     }
 
     .nav-menu {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 80px;
         right: 0;
         background-color: var(--primary-dark);
         flex-direction: column;
         gap: 0;
-        width: 200px;
-        padding: 1rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 300px;
+        padding: 0;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
+        z-index: 1000;
     }
 
     .nav-menu.active {
-        max-height: 300px;
+        max-height: 500px;
+        overflow-y: auto;
     }
 
     .nav-menu li {
-        padding: 0 1rem;
+        padding: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
     }
 
     .nav-link {
         display: block;
-        padding: 0.75rem 0;
+        padding: 1rem 1.5rem;
+        border-bottom: none;
+        font-size: 1rem;
+    }
+
+    .nav-link.active {
+        background-color: rgba(191, 68, 23, 0.2);
+        border-left: 4px solid var(--rust-orange);
     }
 
     .hero-title {
         font-size: 2rem;
+        line-height: 1.1;
     }
 
     .hero-subtitle {
@@ -1016,10 +1092,160 @@ h1, h2, h3, h4, h5, h6 {
     .hero-tagline {
         font-size: 1rem;
     }
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .product-card {
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+
+    .faq-item {
+        padding: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 1.1rem;
+    }
+
+    .blog-title {
+        font-size: 1.3rem;
+    }
+
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-links {
+        text-align: center;
+    }
+
+    .story-text p, .about-content p {
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .mission-item, .feature-item {
+        padding: 1.5rem;
+    }
+
+    .team-member {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-info-card {
+        padding: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .product-detail-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .product-features {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .product-cta-box {
+        padding: 1.5rem;
+    }
+
+    .breadcrumbs {
+        font-size: 0.85rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn-primary,
+    .cta-buttons .btn-secondary {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        word-wrap: break-word;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        word-wrap: break-word;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        word-wrap: break-word;
+    }
+
+    .product-detail-description {
+        font-size: 1rem;
+    }
+
+    .hours-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .hours-item .day,
+    .hours-item .time {
+        width: 100%;
+    }
 }
 
 /* ===== Tablet & Desktop Styles ===== */
-@media (min-width: 641px) {
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        max-height: none;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+    }
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
     }
