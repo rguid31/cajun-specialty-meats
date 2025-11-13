@@ -108,4 +108,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Newsletter Signup Form Handler
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterMessage = document.getElementById('newsletterMessage');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('newsletter-email').value.trim();
+
+            // Basic email validation
+            if (!email) {
+                showNewsletterMessage('Please enter your email address.', 'error');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showNewsletterMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Simulate newsletter signup (replace with actual backend call)
+            showNewsletterMessage('Thank you! You\'ve been successfully subscribed to our mailing list.', 'success');
+
+            // Reset form after successful submission
+            setTimeout(() => {
+                newsletterForm.reset();
+                newsletterMessage.style.display = 'none';
+                newsletterMessage.className = 'newsletter-message';
+            }, 5000);
+
+            // Log subscription data (for demonstration - remove in production)
+            console.log('Newsletter subscription:', { email });
+        });
+    }
+
+    // Helper function to show newsletter messages
+    function showNewsletterMessage(text, type) {
+        if (newsletterMessage) {
+            newsletterMessage.textContent = text;
+            newsletterMessage.className = `newsletter-message ${type}`;
+        }
+    }
+
+    // Helper function for email validation
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
 });
